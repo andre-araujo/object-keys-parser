@@ -1,3 +1,3 @@
-const objectFactory = (data) => data;
+import ObjectParser from './ObjectParser'
 
-export default objectFactory;
+export default ObjectParser;

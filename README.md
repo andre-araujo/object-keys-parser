@@ -5,4 +5,4 @@ A small lib to translate object keys
 ## Usage
 
 - `npm install`
-- import objectFactory from this package
+- import ObjectParser from this package
