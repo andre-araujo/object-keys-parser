@@ -4,22 +4,42 @@ class ObjectParser {
         this.configMap = configMap;
     }
 
-    parse(dataToConvert) {
-        const { configMap } = this;
-        const parsedObject = {};
+    swapKeys(obj, target) {
+        const objKeys = Object.keys(obj);
+        const swap = {};
 
-        const dataToConvertKeys = Object.keys(dataToConvert);
+        for (let index = 0; objKeys[index]; index += 1) {
+            const key = objKeys[index];
 
-        for (let index = 0; dataToConvertKeys[index]; index += 1) {
-            const dataToConvertKey = dataToConvertKeys[index];
-
-            parsedObject[
-                configMap[dataToConvertKey]
-            ] = dataToConvert[dataToConvertKey];
-            
+            if (target) {
+                swap[
+                    target[key]
+                ] = obj[key];
+            } else {
+                swap[
+                    obj[key]
+                ] = key;
+            }
         }
 
+        return swap;
+    }
+
+    parse(dataToConvert) {
+        const { configMap } = this;
+
+        const parsedObject = this.swapKeys(dataToConvert, configMap);
+
         return parsedObject;
+    }
+
+    revert(dataToRevert) {
+        const { configMap } = this;
+
+        const revertedConfigMap = this.swapKeys(configMap);
+        const revertedObject = this.swapKeys(dataToRevert, revertedConfigMap);
+
+        return revertedObject;
     }
 }
 

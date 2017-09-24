@@ -6,6 +6,8 @@
     "globals": {
         "test": true,
         "expect": true,
+        "describe": true,
+        "it": true,
         "fetch": true,
         "__DEV__": true,
         "__PROD__": true,
@@ -13,6 +15,8 @@
         "__CLIENT__": true
     },
     "rules": {
+        "class-methods-use-this": [0],
+        "linebreak-style": [0],
         "indent": [1, 4, { "SwitchCase": 1 }]
     },
     "extends": "airbnb-base"
