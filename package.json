@@ -1,10 +1,10 @@
 {
-  "name": "object-keys-normalizer",
+  "name": "object-keys-parser",
   "version": "0.0.1",
   "description": "A small lib to translate object keys",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aluis92/object-keys-normalizer"
+    "url": "https://github.com/aluis92/object-keys-parser"
   },
   "author": "aluis92 <andreluis9214@gmail.com>",
   "license": "MIT",
