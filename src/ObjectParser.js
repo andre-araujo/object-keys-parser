@@ -14,7 +14,7 @@ class ObjectParser {
             if (target) {
                 swap[
                     target[key]
-                ] = obj[key];
+                ] = typeof obj[key] === 'object' ? this.swapKeys(obj[key], target) : obj[key];
             } else {
                 swap[
                     obj[key]

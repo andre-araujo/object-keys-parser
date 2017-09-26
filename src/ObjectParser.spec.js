@@ -9,7 +9,7 @@ const thingParser = new ObjectParser(thingMapping);
 
 describe('ObjectParser', () => {
     describe('parse method', () => {
-        it('should switch key to value', () => {
+        it('should translate keys', () => {
             const data = {
                 somethingKey: 'ball',
                 anotherThingKey: 'cube',
@@ -22,10 +22,26 @@ describe('ObjectParser', () => {
 
             expect(thingParser.parse(data)).toEqual(expectedData);
         });
+
+        it('should translate keys recursively', () => {
+            const data = {
+                somethingKey: {
+                    anotherThingKey: 'cube',
+                },
+            };
+
+            const expectedData = {
+                something: {
+                    anotherThing: 'cube',
+                },
+            };
+
+            expect(thingParser.parse(data)).toEqual(expectedData);
+        });
     });
 
     describe('revert method', () => {
-        it('should switch key to value', () => {
+        it('revert keys to default values', () => {
             const data = {
                 something: 'ball',
                 anotherThing: 'cube',
@@ -34,6 +50,22 @@ describe('ObjectParser', () => {
             const expectedData = {
                 somethingKey: 'ball',
                 anotherThingKey: 'cube',
+            };
+
+            expect(thingParser.revert(data)).toEqual(expectedData);
+        });
+
+        it('revert keys to default values recursively', () => {
+            const data = {
+                something: {
+                    anotherThing: 'cube',
+                },
+            };
+
+            const expectedData = {
+                somethingKey: {
+                    anotherThingKey: 'cube',
+                },
             };
 
             expect(thingParser.revert(data)).toEqual(expectedData);
