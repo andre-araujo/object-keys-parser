@@ -49,7 +49,6 @@ adventureParser.parse(items);
 */
 ```
 
-
 ```javascript
 const items = {
     finn: 'sword',
@@ -63,6 +62,25 @@ adventureParser.revert(items);
     human: 'sword',
     dog: null,
     vampire: 'axe'
+}
+*/
+```
+
+It also translate keys recursively:
+
+```javascript
+const friends = {
+    human: {
+        dog: null
+    }
+}
+
+adventureParser.parse(friends);
+/* output:
+{
+    finn: {
+        jake: null
+    }
 }
 */
 ```
