@@ -6,6 +6,10 @@ A small lib to translate object keys.
 
 We can not predict the response of each api with which we work, sometimes we must deal with responses in different languages, or we simply need to normalize some objects keys to fit the application better.
 
+## Install
+
+```npm install object-keys-parser --save```
+
 ## Usage
 
 Import ObjectParser:
